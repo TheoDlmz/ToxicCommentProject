@@ -8,22 +8,22 @@ data = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentP
 
 ##
 
-    data['comment_text'] = data['comment_text'].map(lambda x: re.sub('\\n',' ',str(x)))
+data['comment_text'] = data['comment_text'].map(lambda x: re.sub('\\n',' ',str(x)))
     
     # remove any text starting with User... 
-    data['comment_text'] = data['comment_text'].map(lambda x: re.sub("\[\[User.*",'',str(x)))
+data['comment_text'] = data['comment_text'].map(lambda x: re.sub("\[\[User.*",'',str(x)))
     
     # remove IP addresses or user IDs
-    data['comment_text'] = data['comment_text'].map(lambda x: re.sub("\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}",'',str(x)))
+data['comment_text'] = data['comment_text'].map(lambda x: re.sub("\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}",'',str(x)))
     
     # lower uppercase letters
-    data['comment_text'] = data['comment_text'].map(lambda x: str(x).lower())
+data['comment_text'] = data['comment_text'].map(lambda x: str(x).lower())
     
     #remove http links in the text
-    data['comment_text'] = data['comment_text'].map(lambda x: re.sub("(http://.*?\s)|(http://.*)",'',str(x)))
+data['comment_text'] = data['comment_text'].map(lambda x: re.sub("(http://.*?\s)|(http://.*)",'',str(x)))
     
     #remove all punctuation except for apostrophe (')
-    data['comment_text'] = data['comment_text'].map(lambda x: re.sub('["#$%&\()*+,-.!?/:;<=>@[\\]^_`{|}~]','',str(x)))
+data['comment_text'] = data['comment_text'].map(lambda x: re.sub('["#$%&\()*+,-.!?/:;<=>@[\\]^_`{|}~]','',str(x)))
 
 
 ##
