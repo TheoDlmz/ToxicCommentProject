@@ -4,42 +4,46 @@ import torch.nn as nn
 import torch
 
 ##
-COMMENT = '0'
+COMMENT = 'comment_text'
+'''
 train_comments = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\train_comments.csv')[COMMENT].to_numpy()
 test_comments = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\test_comments.csv')[COMMENT].to_numpy()
 
 train_labels = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\train_labels.csv').to_numpy()[:,1:]
 test_labels = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\test_labels.csv').to_numpy()[:,1:]
+'''
 
 
+comments = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\comments.csv')[COMMENT].to_numpy()
+
+labels = pd.read_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\labels.csv').to_numpy()[:,1:]
 ##
 
-def tokenize(s): return s.split()
 
-
-##
-
-
-train_comments_split = [tokenize(com) for com in train_comments]
-test_comments_split = [tokenize(com) for com in test_comments]
+comments_split = [com.split() for com in comments]
 
 ##
 
 
 vocab = dict()
 pos = 0
+txtidx = []
+maxlength = 0
 
-for comment in train_comments_split:
+for comment in comments_split:
+    isent = []
+    maxlength = max(maxlength,len(comment))
     for w in comment:
         if w not in vocab:
             vocab[w] = pos
             pos +=1
+        isent.append(vocab[w])
+    txtidx.append(torch.LongTensor(list(set(isent))))
 
-for comment in test_comments_split:
-    for w in comment:
-        if w not in vocab:
-            vocab[w] = pos
-            pos +=1
+print("Number of words : ",len(vocab))
+print("Maximum length of comment : ",maxlength)
+print("Number of comments :",len(comments_split))
+print(txtidx[0])
             
 ##
 

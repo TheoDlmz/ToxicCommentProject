@@ -43,9 +43,11 @@ labels = data[LABELS]
 
 assert(len(comments) == len(labels))
 
+comments.to_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\comments.csv')
+labels.to_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\labels.csv')
 
 ##
-
+'''
 n = len(comments)
 n_train =int(2*n/3)
 a = np.arange(n)
@@ -56,7 +58,6 @@ test_comments = pd.DataFrame(comments.to_numpy()[test_index])
 train_labels = pd.DataFrame(labels.to_numpy()[train_index])
 test_labels = pd.DataFrame(labels.to_numpy()[test_index])
 
-
 ##
 
 
@@ -66,3 +67,5 @@ train_comments.to_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicComme
 
 test_labels.to_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\test_labels.csv')
 train_labels.to_csv('C:\\Users\\Theo Delemazure\\Documents\\GitHub\\ToxicCommentProject\\data\\clean\\train_labels.csv')
+
+'''
