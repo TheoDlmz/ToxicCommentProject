@@ -90,6 +90,7 @@ loss_function = nn.MultiLabelSoftMarginLoss()
 optimizer = torch.optim.Adagrad(classifier.parameters(),lr=1e-1)
 
 ##
+import random
 
 
 total = int(100)
@@ -97,7 +98,7 @@ randomidx = list(range(total))
 preds = torch.zeros((total,6))
 
 for epoch in range(10):
-    total_loss = torch.Tensor([0])
+    total_loss = torch. Tensor([0])
     random.shuffle(randomidx)
     for index in randomidx:
         x = txtidx[index]
