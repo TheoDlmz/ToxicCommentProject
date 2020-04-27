@@ -1,0 +1,7 @@
+
+clean_data_jd.py
+.gitignore.txt
+data/clean/bad_comments.csv
+data/clean/bad_labels.csv
+data/clean/comments.csv
+*.csv
